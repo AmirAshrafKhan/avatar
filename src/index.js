@@ -1,5 +1,7 @@
 // require('dotenv').config({path: './env'})
 import dotenv from "dotenv";
+import express from "express";
+import { app } from "./app.js";
 
 import connectDB from "./db/index.js";
 
@@ -13,8 +15,8 @@ connectDB()
       console.log(`server is running at port : ${process.env.PORT}`);
     });
   })
-  .catch(() => {
-    console.log("MongoDB  C onnection failed", err);
+  .catch((error) => {
+    console.log("MongoDB  Connection failed", error);
   });
 
 /*
