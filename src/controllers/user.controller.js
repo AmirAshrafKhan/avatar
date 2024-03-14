@@ -55,13 +55,13 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //   const coverimageLocalPath = req.files?.coverImage[0]?.path;
 
-  let coverimageLocalPath;
+  let coverImageLocalPath;
   if (
     req.files &&
     Array.isArray(req.files.coverImage) &&
     req.files.coverImage.length > 0
   ) {
-    coverimageLocalPath = req.files.coverImage[0].path;
+    coverImageLocalPath = req.files.coverImage[0].path;
   }
 
   if (!avatarLocalPath) {
@@ -69,7 +69,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
   const avatar = await uploadonCloudinary(avatarLocalPath);
 
-  const coverImage = await uploadonCloudinary(coverimageLocalPath);
+  const coverImage = await uploadonCloudinary(coverImageLocalPath);
 
   if (!avatar) {
     throw new ApiError(409, "User already exists");
